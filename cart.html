@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Sweet Treats Bakery</title>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <!-- or -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- Add jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+    /* Existing Global Styles */
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-image:url(m1.jpeg);
+        background-position: center;
+        background-size: cover;
+    }
+    
+    header {
+        background-color: #f4a460;
+        padding: 1rem;
+    }
+    
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: left;
+        font-size: 18px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+    nav ul li {
+        margin: 0 1rem;
+    }
+    
+    nav ul li i{
+        color: white;
+    }
+    
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .shop-name {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    main {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        text-align: center;
+        color: #8b4513;
+    }
+    
+    /* Cart Page Styles */
+    .cart-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    
+    .cart-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #fafafa;
+        border-radius: 8px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cart-item img {
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: cover;
+        margin-right: 20px;
+        border-radius: 8px;
+    }
+    
+    .cart-item h3 {
+        font-size: 1.2rem;
+        color: #8b4513;
+        margin: 0;
+    }
+    
+    .cart-item p {
+        font-size: 14px;
+        color: #666;
+        margin: 5px 0;
+    }
+    
+    .cart-item button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-left: auto;
+        transition: background-color 0.3s ease;
+    }
+    
+    .cart-item button:hover {
+        background-color: #c0392b;
+    }
+    
+    #cart-total {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+        text-align: right;
+    }
+    
+    /* Menu Grid Styles (Unchanged from your existing CSS) */
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    
+    .menu-item {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .menu-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .menu-item h3 {
+        font-size: 1.2rem;
+        margin: 1rem;
+        color: #8b4513;
+    }
+    
+    .menu-item p {
+        margin: 0 1rem 1rem;
+        color: #666;
+    }
+    
+    .menu-item:hover {
+        transition: transform 0.3s ease; 
+        transform: scale(1.05);
+    }
+    
+    .menu-item .price {
+        font-weight: bold;
+        color: #f4a460;
+    }
+    
+    .order-now {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #f4a460;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .order-now:hover {
+        background-color: #e48c3f;
+    }
+    
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+        .menu-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+    }
+    
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        nav ul {
+            margin-top: 1rem;
+        }
+    
+        .shop-name {
+            margin-top: 1rem;
+        }
+    }
+    /* Button for downloading PDF */
+    .order-now-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+.download-pdf-btn:hover {
+    background-color: #45a049;
+}
+
+</style>    
+    </head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><i class='bx bx-home-heart'></i><a href="index.html">Home</a></li>
+                <li><i class='bx bx-food-menu'></i><a href="menu.html">Menu</a></li>
+                <li><i class='bx bx-cake'></i><a href="order.html">Order</a></li>
+                <li><i class='bx bxs-contact' ></i><a href="contact.html">Contact</a></li>
+                <li><i class='bx bx-cart'></i><a href="cart.html">cart</a></li>
+            </ul>
+            <div class="shop-name"><i class='bx bxs-store' ></i>Sweet Treats Bakery</div>
+        </nav>
+    </header>
+    <main>
+        <div class="cart-container"></div>
+        <p id="cart-total"></p>
+    </main>
+    <button id="order-now" class="order-now-btn">Order Now</button>
+    
+    <script>
+        // Function to display cart items
+        function displayCartItems() {
+            const cartContainer = document.querySelector('.cart-container');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `<p>Your cart is empty.</p>`;
+                document.getElementById('cart-total').textContent = '';
+                return;
+            }
+    
+            // Clear existing content
+            cartContainer.innerHTML = '';
+    
+            // Initialize total price
+            let total = 0;
+    
+            // Loop through the cart items and display them
+            cart.forEach(item => {
+                total += parseFloat(item.price.replace('₹', '').replace('/-', '')) * item.quantity;
+    
+                // Create a div for each cart item
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+    
+                // Add item image
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.name;
+                cartItem.appendChild(img);
+    
+                // Add item name
+                const name = document.createElement('h3');
+                name.textContent = item.name;
+                cartItem.appendChild(name);
+    
+                // Add item price and quantity
+                const price = document.createElement('p');
+                price.textContent = `Price: ${item.price}`;
+                cartItem.appendChild(price);
+    
+                const quantity = document.createElement('p');
+                quantity.textContent = `Quantity: ${item.quantity}`;
+                cartItem.appendChild(quantity);
+    
+                // Add Remove Button
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.classList.add('remove-item');
+                removeButton.addEventListener('click', () => {
+                    removeCartItem(item.name);
+                });
+                cartItem.appendChild(removeButton);
+    
+                cartContainer.appendChild(cartItem);
+            });
+    
+            // Display the total price
+            const totalContainer = document.getElementById('cart-total');
+            if (totalContainer) {
+                totalContainer.textContent = `Total: ₹${total.toFixed(2)}`;
+            }
+        }
+    
+        // Function to remove a single quantity of an item from the cart
+        function removeCartItem(name) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Find the item in the cart
+            const itemIndex = cart.findIndex(item => item.name === name);
+    
+            if (itemIndex !== -1) {
+                // Decrease the quantity of the item
+                cart[itemIndex].quantity--;
+    
+                // If quantity is zero, remove the item from the cart
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                }
+            }
+    
+            // Update localStorage and reload cart
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+    
+        // Redirect to the Order Page with cart items
+        document.getElementById('order-now').addEventListener('click', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add some items to order.');
+                return;
+            }
+    
+            // Convert cart data to a JSON string and encode it for the URL
+            const cartData = encodeURIComponent(JSON.stringify(cart));
+    
+            // Redirect to order.html with cart data in the query string
+            window.location.href = `order.html?cart=${cartData}`;
+        });
+    
+        // Example Add to Cart Function (Adjust based on your implementation)
+        function addToCart(item) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Check if the item already exists in the cart
+            const existingItem = cart.find(cartItem => cartItem.name === item.name);
+    
+            if (existingItem) {
+                // Increment quantity if item exists
+                existingItem.quantity++;
+            } else {
+                // Add new item with quantity 1
+                cart.push({ ...item, quantity: 1 });
+            }
+    
+            // Save updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+    
+        // Load and display cart items on page load
+        window.onload = displayCartItems;
+    
+    </script>
+    
+    
+</body>
+</html>

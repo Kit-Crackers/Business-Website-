@@ -1,0 +1,127 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f4a460;
+    padding: 4px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li i{
+  color:white;
+}
+
+.shop-name {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+main {
+    padding: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    text-align: center;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+}
+
+.carousel img {
+    width: 300px;
+    height: auto;
+}
+
+.button {
+    display: inline-block;
+    background-color: #f4a460;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+footer {
+  background: #1c1b1b;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2, p {
+  margin: 5px 0;
+}
+
+.social-icons i {
+  color: white;
+  margin: 0 5px;
+  font-size: 22px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.footer-content div {
+  font-size: 0.9rem;
+}
+
+.phone-link {
+  color: white; 
+  text-decoration: none; 
+}
+
+.phone-link:hover {
+  color: #ccc; 
+}
+
+@media (max-width: 768px) {
+  nav {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  nav ul {
+      margin-top: 1rem;
+  }
+
+  .shop-name {
+      margin-top: 1rem;
+  }
+}
+/* Add more styles as needed for other pages */

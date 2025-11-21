@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <!-- or -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <title>Order - Sweet Treats Bakery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image:url(m2.jpeg);
+            background-position: center;
+            background-size: cover;
+            
+        }
+
+        header {
+            background-color: #f4a460;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 1rem;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .shop-name {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><i class='bx bx-home-heart'></i><a href="index.html">Home</a></li>
+                <li><i class='bx bx-food-menu'></i><a href="menu.html">Menu</a></li>
+                <li><i class='bx bx-cake'></i><a href="order.html">Order</a></li>
+                <li><i class='bx bxs-contact' ></i><a href="contact.html">Contact</a></li>
+                <li><i class='bx bx-cart'></i><a href="cart.html">cart</a></li>
+            </ul>
+            <div class="shop-name"><i class='bx bxs-store' ></i>Sweet Treats Bakery</div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Place Your Order</h1>
+        <form id="order-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error" id="name-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <div class="error" id="phone-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="pickup">Pickup Date and Time:</label>
+                <input type="datetime-local" id="pickup" name="pickup" required>
+                <div class="error" id="pickup-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="custom-cake">Custom Cake:</label>
+                <select id="custom-cake" name="custom-cake">
+                    <option value="">Select an option</option>
+                    <option value="birthday">Birthday Celebration</option>
+                    <option value="wedding">Wedding Celebration</option>
+                    <option value="anniversary">Anniversary Celebration</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="what-to-order">What to Order:</label>
+                <textarea id="what-to-order" name="what-to-order" readonly rows="5"></textarea>
+            </div>
+            
+            <button type="submit">Place Order</button>
+        </form>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const orderForm = document.getElementById('order-form');
+            const whatToOrderField = document.getElementById('what-to-order');
+            const whatToOrderError = document.createElement('div');
+            whatToOrderError.classList.add('error');
+            whatToOrderField.parentNode.appendChild(whatToOrderError);
+    
+            // Load cart items from localStorage and populate the "What to Order" field
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length > 0) {
+                const orderDetails = cart.map(item => `${item.name} x ${item.quantity}`).join('\n');
+                whatToOrderField.value = orderDetails;
+            } else {
+                whatToOrderField.value = "";
+            }
+    
+            // Handle form submission
+            orderForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+    
+                // Collect form data
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const pickup = document.getElementById('pickup').value.trim();
+                const customCake = document.getElementById('custom-cake').value.trim();
+                const whatToOrder = whatToOrderField.value.trim();
+    
+                // Validate required fields
+                if (!name || !phone || !pickup) {
+                    alert("Please fill in all required fields.");
+                    return;
+                }
+    
+                // Validate "What to Order" field
+                if (!whatToOrder) {
+                    whatToOrderError.textContent = "Please select at least one item to order.";
+                    return;
+                } else {
+                    whatToOrderError.textContent = ""; // Clear error message if filled
+                }
+    
+                // Validate pickup date and time
+                const isValidPickupTime = validateDateTime(pickup);
+                if (!isValidPickupTime) {
+                    alert("Pickup date and time must be in the future.");
+                    return;
+                }
+    
+                // Generate WhatsApp message
+                const message = generateWhatsAppMessage(name, phone, pickup, customCake, whatToOrder);
+    
+                // Show confirmation alert before clearing form
+                const userAlert = `Your Order Details:\n\n` +
+                    `Name: ${name}\n` +
+                    `Phone: ${phone}\n` +
+                    `Pickup Date & Time: ${new Date(pickup).toLocaleString()}\n` +
+                    `Custom Cake: ${customCake || 'None'}\n\n` +
+                    `What to Order:\n${whatToOrder}\n\n` +
+                    `Click OK to submit and clear details.`;
+                
+                if (confirm(userAlert)) {
+                    // Send message to WhatsApp
+                    sendToWhatsApp(message);
+    
+                    // Clear the form after user clicks OK
+                    orderForm.reset();
+                    localStorage.removeItem('cart');
+                }
+            });
+    
+            // Validate pickup date and time
+            function validateDateTime(dateTime) {
+                const selectedDate = new Date(dateTime);
+                const currentDate = new Date();
+                return selectedDate > currentDate;
+            }
+    
+            // Generate WhatsApp message format
+            function generateWhatsAppMessage(name, phone, pickup, customCake, whatToOrder) {
+                const pickupFormatted = new Date(pickup).toLocaleString();
+                return `Hello, I would like to place an order:\n\n` +
+                    `Name: ${name}\n` +
+                    `Phone: ${phone}\n` +
+                    `Pickup Date and Time: ${pickupFormatted}\n` +
+                    `Custom Cake: ${customCake || 'None'}\n\n` +
+                    `What to Order:\n${whatToOrder}\n\n` +
+                    `Thank you!`;
+            }
+    
+            // Send message to WhatsApp
+            function sendToWhatsApp(message) {
+                const businessNumber = "918931960533"; // Replace with your business number (include country code)
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappApiUrl = `https://wa.me/${businessNumber}?text=${encodedMessage}`;
+                window.open(whatsappApiUrl, "_blank");
+            }
+        });
+    </script>
+    
+        
+</body>
+</html>

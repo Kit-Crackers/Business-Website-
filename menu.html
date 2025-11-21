@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Sweet Treats Bakery</title>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <!-- or -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f3f0;
+        }
+
+        header {
+            background-color: #f4a460;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: left;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li i{
+            color: white;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .shop-name {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b4513;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item h3 {
+            font-size: 1.2rem;
+            margin: 1rem;
+            color: #8b4513;
+        }
+
+        .menu-item p {
+            margin: 0 1rem 1rem;
+            color: #666;
+        }
+
+        .menu-item:hover{
+            transition: transform 0.3s ease; 
+            transform: scale(1.05);
+        }
+        .menu-item .price {
+            font-weight: bold;
+            color: #f4a460;
+        }
+
+        .order-now {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #f4a460;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-now:hover {
+            background-color: #e48c3f;
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            .shop-name {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+    </head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><i class='bx bx-home-heart'></i><a href="index.html">Home</a></li>
+                <li><i class='bx bx-food-menu'></i><a href="menu.html">Menu</a></li>
+                <li><i class='bx bx-cake'></i><a href="order.html">Order</a></li>
+                <li><i class='bx bxs-contact' ></i><a href="contact.html">Contact</a></li>
+                <li><i class='bx bx-cart'></i><a href="cart.html">cart</a></li>
+            </ul>
+            <div class="shop-name"><i class='bx bxs-store' ></i>Sweet Treats Bakery</div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Our Menu</h1>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="p1.jpeg" alt="Chocolate Cake">
+                <h3>Chocolate Cake</h3>
+                <p>Rich, moist chocolate cake with chocolate frosting(1kg)</p>
+                <p class="price">₹1200/-</p>
+                <button class="order-now" >Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p2.jpeg" alt="Blueberry Cupcakes">
+                <h3>Blueberry Pastery</h3>
+                <p>Pastery packed with fresh blueberries</p>
+                <p class="price">₹90/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p7.jpeg" alt="Fruit Cake">
+                <h3>Fruit Cake</h3>
+                <p>Soft Cake with fresh fruit toppings(1kg)</p>
+                <p class="price">₹1300/-</p>
+                <button class="order-now" >Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p3.jpeg" alt="Strawberry Cheesecake">
+                <h3>Strawberry Cheesecake</h3>
+                <p>Creamy cheesecake topped with fresh strawberries(1kg)</p>
+                <p class="price">₹1500/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p4.jpeg" alt="Croissants">
+                <h3>Croissants</h3>
+                <p>Buttery, flaky croissants baked to golden perfection</p>
+                <p class="price">₹85/-</p>
+                <button class="order-now" >Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p5.jpeg" alt="Apple Pie">
+                <h3>Apple Pie</h3>
+                <p>Classic apple pie with a flaky crust</p>
+                <p class="price">₹150/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p6.jpeg" alt="Cinnamon Rolls">
+                <h3>Cinnamon Rolls</h3>
+                <p>Soft, gooey cinnamon rolls with cream cheese frosting</p>
+                <p class="price">₹155/-</p>
+                <button class="order-now" >Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p9.jpeg" alt="Cream Roll">
+                <h3>Cream Roll</h3>
+                <p>Fluffy, soft rolls with cream filling inside</p>
+                <p class="price">₹160/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="p8.jpeg" alt="Red Velvet Cupcakes">
+                <h3>RedVelvet Cake</h3>
+                <p>Moist red velvet cupcakes with cream cheese frosting</p>
+                <p class="price">₹90/-</p>
+                <button class="order-now" >Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="i1.jpeg" alt="Choclate Cupcakes">
+                <h3>Chocolate Cupcakes </h3>
+                <p>Cupcakes baked with rich Choclate flavor</p>
+                <p class="price">₹90/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="i2.jpeg" alt="Vanilla cupcakes">
+                <h3>Vanilla Cupcakes </h3>
+                <p>Classic Cupcake with rich vanilla taste</p>
+                <p class="price">₹90/-</p>
+                <button class="order-now" >Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="i3.jpeg" alt="Choclate Donut">
+                <h3>Choclate Donuts </h3>
+                <p>Soft Donut with flavorfull Choclate</p>
+                <p class="price">₹80/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="i4.jpeg" alt="Cream Donut">
+                <h3>Cream Donuts </h3>
+                <p>Soft Donut whipped in rich cream </p>
+                <p class="price">₹80/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="i5.jpeg" alt="Choclate Pastery">
+                <h3>Choclate Pastery</h3>
+                <p>Pastery with sweet chocolate flavor</p>
+                <p class="price">₹90/-</p>
+                <button class="order-now">Add-to-cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="i6.jpeg" alt="RedVelvet Pastery">
+                <h3>Redvelvet Pastery</h3>
+                <p>Moist red velvet Pastery with cream cheese frosting</p>
+                <p class="price">₹90/-</p>
+                <button class="order-now">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="i7.jpeg" alt="Pinnaple Pastery">
+                <h3>Pinnaple Pastery</h3>
+                <p>Soft flavorfull pastery with rich Pinnaple</p>
+                <p class="price">₹90/-</p>
+                <button class="order-now" >Add-to-cart</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Function to add item to cart
+        function addToCart(item) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Check if item already exists in the cart
+            const existingItem = cart.find(cartItem => cartItem.name === item.name);
+    
+            if (existingItem) {
+                // If the item exists, increase its quantity
+                existingItem.quantity += 1;
+            } else {
+                // If the item does not exist, add it with a quantity of 1
+                cart.push({ ...item, quantity: 1 });
+            }
+    
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+    
+            // Display confirmation message
+            alert(`${item.name} has been added to your cart!`);
+        }
+    
+        // Attach event listeners to "Add-to-cart" buttons
+        document.querySelectorAll('.order-now').forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Find the parent menu item element
+                const menuItem = event.target.closest('.menu-item');
+    
+                // Get item details
+                const item = {
+                    image: menuItem.querySelector('img').src,
+                    name: menuItem.querySelector('h3').textContent,
+                    price: menuItem.querySelector('.price').textContent
+                };
+    
+                // Add item to cart
+                addToCart(item);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -43,11 +43,3 @@ Sweet-Treat-Bakery/
 │ ├── script.js # functionality
 │
 └── images/ # All product and background images
-
-
-
-
-
-
-
-nd background images

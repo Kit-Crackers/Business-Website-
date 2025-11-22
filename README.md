@@ -28,18 +28,17 @@ This project is designed as a mini-project for academic purposes and demonstrate
 
 ## Project Structure
 
-Sweet-Treat-Bakery/
-│
-├── index.html # Homepage 
-├── menu.html # All bakery products
-├── order.html # order page
-├── contact.html # Contact & custom order page
-├── cart.html # To add product to cart 
-│
-├── css/
-│ ├── style.css # Main website styling
-│
-├── js/
-│ ├── script.js # functionality
-│
-└── images/ # All product and background images
+HTML:- 
+1.index.html # Homepage 
+2. menu.html # All bakery products
+3. order.html # order page
+4. contact.html # Contact & custom order page
+5. cart.html # To add product to cart 
+
+css:-
+1.style.css # Main website styling
+
+JS:-
+1.script.js # functionality
+
+images # All product and background images

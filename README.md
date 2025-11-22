@@ -31,9 +31,13 @@ This project is designed as a mini-project for academic purposes and demonstrate
 HTML:- 
 
 1.index.html # Homepage 
+
 2. menu.html # All bakery products
+   
 3. order.html # order page
+   
 4. contact.html # Contact & custom order page
+   
 5. cart.html # To add product to cart 
 
 css:-

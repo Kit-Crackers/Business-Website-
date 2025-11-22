@@ -32,13 +32,13 @@ HTML:-
 
 1.index.html # Homepage 
 
-2. menu.html # All bakery products
+2.menu.html # All bakery products
    
-3. order.html # order page
+3.order.html # order page
    
-4. contact.html # Contact & custom order page
+4.contact.html # Contact & custom order page
    
-5. cart.html # To add product to cart 
+5.cart.html # To add product to cart 
 
 css:-
 

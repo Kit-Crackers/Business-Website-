@@ -48,4 +48,4 @@ JS:-
 
 1.script.js # functionality
 
-images # All product and background images
+Images # All product and background images

@@ -29,6 +29,7 @@ This project is designed as a mini-project for academic purposes and demonstrate
 ## Project Structure
 
 HTML:- 
+
 1.index.html # Homepage 
 2. menu.html # All bakery products
 3. order.html # order page
@@ -36,9 +37,11 @@ HTML:-
 5. cart.html # To add product to cart 
 
 css:-
+
 1.style.css # Main website styling
 
 JS:-
+
 1.script.js # functionality
 
 images # All product and background images
